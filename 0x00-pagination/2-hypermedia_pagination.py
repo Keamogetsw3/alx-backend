@@ -69,8 +69,8 @@ class Server:
         Raises:
             AssertionError: If page or page_size is not a positive integer.
         """
-        assert isinstance(page, int) and isinstance(page_size, int), "Both page and page_size must be integers."
-        assert page > 0 and page_size > 0, "Both page and page_size must be positive integers."
+        assert isinstance(page, int) and isinstance(page_size, int),
+        assert page > 0 and page_size > 0,
 
         start, end = index_range(page, page_size)
         data = self.dataset()
@@ -89,13 +89,7 @@ class Server:
             page_size (int): The number of records per page.
 
         Returns:
-            Dict: A dictionary containing:
-                - 'page_size': Number of records on the current page.
-                - 'page': The current page number.
-                - 'data': The list of records for the current page.
-                - 'next_page': The next page number, or None if there is no next page.
-                - 'prev_page': The previous page number, or None if on the first page.
-                - 'total_pages': The total number of pages available.
+            Dict: A dictionary
         """
         data = self.get_page(page, page_size)
         start, end = index_range(page, page_size)

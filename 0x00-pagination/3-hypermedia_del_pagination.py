@@ -53,7 +53,9 @@ class Server:
         """
         if self.__indexed_dataset is None:
             dataset = self.dataset()
-            self.__indexed_dataset = {i: dataset[i] for i in range(len(dataset))}
+            self.__indexed_dataset = {
+                i: dataset[i] for i in range(len(dataset))
+            }
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
@@ -62,16 +64,12 @@ class Server:
         resilience to deletions.
 
         Args:
-            index (int, optional): The starting index for the page. Defaults to 0.
+            index (int, optional): The starting index for the page.
+            Defaults to 0.
             page_size (int): The number of records per page.
 
         Returns:
             Dict: A dictionary containing:
-                - 'index': The starting index of the current page.
-                - 'next_index': The starting index for the next page, or None if at the end.
-                - 'page_size': The number of records in the current page.
-                - 'data': The list of records for the current page.
-                - 'total_pages': The total number of pages available.
 
         Raises:
             AssertionError: If the index is out of range.
